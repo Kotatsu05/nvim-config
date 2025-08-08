@@ -15,4 +15,3 @@ vim.wo.relativenumber = true
 
 require("vim-cmd")
 require("lazy").setup("plugins")
-

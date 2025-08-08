@@ -1,11 +1,47 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set number")
+local map = vim.keymap.set
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
-vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
-vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
-vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+vim.opt.winborder = "rounded"
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.wrap = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
+
+vim.opt.scrolloff = 8
+vim.o.cursorline = true
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.undofile = true
+vim.o.mouse = 'a'
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.inccommand = 'split'
+
+map('n', '<C-h>', ':wincmd h<CR>')
+map('n', '<C-j>', ':wincmd j<CR>')
+map('n', '<C-k>', ':wincmd k<CR>')
+map('n', '<C-l>', ':wincmd l<CR>')
+
+map({'n', 'v', 'x'}, '<leader>y', '"+y<CR>')
+map({'n', 'v', 'x'}, '<leader>p', '"+p<CR>')
+
+map('t', '<Esc><Esc>', '<C-\\><C-n>')
+
+map('n', '<leader>e', ":Oil<CR>")
+
+map('n', '<leader>ff', ':Telescope find_files<CR>', { desc = 'Telescope find files' })
+map('n', '<leader>fg', ':Telescope live_grep<CR>', { desc = 'Telescope live grep' })
+map('n', '<leader>fb', ':Telescope buffers<CR>', { desc = 'Telescope buffers' })
+map('n', '<leader>fh', ':Telescope help_tags<CR>', { desc = 'Telescope help tags' })
+
+map("n", "K", vim.lsp.buf.hover)
+map("n", "<leader>gd", vim.lsp.buf.definition)
+map("n", "<leader>gr", vim.lsp.buf.references)
+map({ "n", "v", "x" }, "<leader>ca", vim.lsp.buf.code_action)
+
+map("n", "<leader>gf", vim.lsp.buf.format)
+
+vim.lsp.enable({"lua_ls", "clangd"})

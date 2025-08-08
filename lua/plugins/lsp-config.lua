@@ -1,36 +1,24 @@
 return {
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { 
-         },
-      })
-    end,
-  },
-  {
+	"mason-org/mason-lspconfig.nvim",
+  opts = {},
+  dependencies = {
+  	"mason-org/mason.nvim",
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.rust_analyzer.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.omnisharp.setup({
-        capabilities = capabilities,
-      })
-
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-    end,
+			require("mason-lspconfig").setup {
+				automatic_enable = {
+        "lua_ls",
+        "clangd",
+				"charp_ls"
+				}
+			}	
+		end,
   },
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "hrsh7th/cmp-nvim-lsp"},
+    config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		end,
+	}
 }

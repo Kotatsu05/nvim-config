@@ -2,17 +2,20 @@ return {
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-        local builtin = require("telescope.builtin")
-        vim.keymap.set('n','<C-t>', builtin.find_files, {})
-        vim.keymap.set('n','<leader>fg', builtin.live_grep, {})
-    end
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
+			local data = assert(vim.fn.stdpath "data") --[[@as string]]
+
       require("telescope").setup({
         extensions = {
+					warp_results = true,
+					fzf = {},
+					history = {
+						path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
+						limit = 100,
+					},
           ["ui-select"] = {
             require("telescope.themes").get_dropdown {
             }
