@@ -9,6 +9,11 @@ return {
 			local data = assert(vim.fn.stdpath "data") --[[@as string]]
 
       require("telescope").setup({
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+				},
         extensions = {
 					warp_results = true,
 					fzf = {},
