@@ -25,6 +25,12 @@ map('n', '<C-j>', ':wincmd j<CR>')
 map('n', '<C-k>', ':wincmd k<CR>')
 map('n', '<C-l>', ':wincmd l<CR>')
 
+
+map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", {})
+map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", {})
+map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", {})
+map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
+
 map({'n', 'v', 'x'}, '<leader>y', '"+y<CR>')
 map({'n', 'v', 'x'}, '<leader>p', '"+p<CR>')
 
@@ -41,7 +47,15 @@ map("n", "K", vim.lsp.buf.hover)
 map("n", "<leader>gd", vim.lsp.buf.definition)
 map("n", "<leader>gr", vim.lsp.buf.references)
 map({ "n", "v", "x" }, "<leader>ca", vim.lsp.buf.code_action)
+map("n", "<leader>rn", "vim.lsp.buf.rename()", { noremap=true, silent=true })
 
 map("n", "<leader>gf", vim.lsp.buf.format)
 
 vim.lsp.enable({"lua_ls", "clangd"})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
