@@ -3,13 +3,13 @@
 ### Windows PowerShell
 
 ```powershell
-git clone https://github.com/Kotatsu05/nvim-config.git $ENV:USERPROFILE\AppData\Local\nvim
+git clone -b V2 https://github.com/Kotatsu05/nvim-config.git $ENV:USERPROFILE\AppData\Local\nvim
 ```
 
 ### Linux Bash
 
 ```shell
-git clone https://github.com/Kotatsu05/nvim-config.git ~/.config/nvim && nvim
+git clone -b V2 https://github.com/Kotatsu05/nvim-config.git ~/.config/nvim && nvim
 ```
 ## Uninstall
 
