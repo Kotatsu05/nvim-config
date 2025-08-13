@@ -33,6 +33,7 @@ map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
 
 map({'n', 'v', 'x'}, '<leader>y', '"+y<CR>')
 map({'n', 'v', 'x'}, '<leader>p', '"+p<CR>')
+map ('n', '<leader>q', ':q<CR>')
 
 map('t', '<Esc><Esc>', '<C-\\><C-n>')
 
