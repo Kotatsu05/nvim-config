@@ -26,10 +26,10 @@ map('n', '<C-k>', ':wincmd k<CR>')
 map('n', '<C-l>', ':wincmd l<CR>')
 
 
-map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", {})
-map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", {})
-map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", {})
-map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
+map("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", {})
+map("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", {})
+map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", {})
+map("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", {})
 
 map({'n', 'v', 'x'}, '<leader>y', '"+y<CR>')
 map({'n', 'v', 'x'}, '<leader>p', '"+p<CR>')
@@ -52,7 +52,7 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { noremap=true, silent=true })
 
 map("n", "<leader>gf", vim.lsp.buf.format)
 
-vim.lsp.enable({"lua_ls", "clangd"})
+vim.lsp.enable({"lua_ls", "clangd", "omnisharp"})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
@@ -60,3 +60,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+
+map("n", "<leader>dc", ":DapContinue<CR>")
+map("n", "<F5>",":DapContinue<CR>")
+
+map("n", "<F9>", ":DapToggleBreakpoint<CR>")
+map("n", "<leader>db", ":DapToggleBreakpoint<CR>")
+
+map("n", "<F10>", ":DapStepOver<CR>")
+map("n", "<leader>do", ":DapStepOver<CR>")
+
+map("n", "<F11>", ":DapStepInt<CR>")
+map("n", "<leader>di", ":DapStepInt<CR>")
+
+map("n", "<F12>", ":DapStepOut<CR>")
+--map("n", "<F12>", ":DapStepOut<CR>")
