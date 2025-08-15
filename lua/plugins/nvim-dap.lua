@@ -4,14 +4,10 @@ return {
 		local dap = require("dap")
 
 		local mason_base_path = vim.fn.stdpath("data") .. "/mason/packages/"
-		--local mason_path = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"
 
 		dap.adapters.codelldb = {
 			type = "executable",
-			command = mason_base_path .. "codelldb/codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
-
-			-- On windows you may have to uncomment this:
-			-- detached = false,
+			command = mason_base_path .. "codelldb/codelldb", 
 		}
 
 		dap.adapters.netcoredbg = {
@@ -39,12 +35,12 @@ return {
 		dap.configurations.cs = {
 			{
 				type = "coreclr",
-				name = "launch - netcoredbg",
+				name = "Launch - netcoredbg",
 				request = "launch",
 				program = function()
-					-- return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/src/", "file")
-					return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/", "file")
+					return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
 				end,
+				console = "integratedTerminal",
 			},
 		}
 
