@@ -43,6 +43,7 @@ return {
 				console = "integratedTerminal",
 			},
 		}
+		dap.configurations.vb = dap.configurations.cs
 
 	end,
 }
