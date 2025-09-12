@@ -1,13 +1,11 @@
 return {
-	"williamboman/mason.nvim",
-  config = function()
-  	require("mason").setup()
-  end,
-	opts = {
-		ensure_installed = {
-			"codelldb",
-			"clangd",
-			"netcoredbg",
-		},
-	},
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup({
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry",
+			},
+		})
+    end,
 }
