@@ -26,7 +26,26 @@ return {
             require("telescope.themes").get_dropdown {
             }
           }
-        }
+        },
+				defaults = {
+					layout_strategy = 'horizontal',
+					layout_config = {
+						horizontal = {
+							prompt_position = 'top',
+							preview_width = 0.55,
+      				results_width = 0.45,
+      				width = 0.90,
+      				height = 0.85,
+      				preview_cutoff = 120,
+						},
+						vertical = {
+							mirror = false,
+						},
+					},
+					sorting_strategy = "ascending",
+					winblend = 10,
+					border = true,
+				},
       })
       require("telescope").load_extension("ui-select")
     end

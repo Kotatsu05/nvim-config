@@ -25,14 +25,13 @@ map('n', '<C-j>', ':wincmd j<CR>')
 map('n', '<C-k>', ':wincmd k<CR>')
 map('n', '<C-l>', ':wincmd l<CR>')
 
-
 map("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", {})
 map("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", {})
 map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", {})
 map("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", {})
 
-map({'n', 'v', 'x'}, '<leader>y', '"+y<CR>')
-map({'n', 'v', 'x'}, '<leader>p', '"+p<CR>')
+map({'n', 'v', 'x'}, '<leader>y', '"+y')
+map({'n', 'v', 'x'}, '<leader>p', '"+p')
 map ('n', '<leader>q', ':q<CR>')
 
 map('t', '<Esc><Esc>', '<C-\\><C-n>')
@@ -47,13 +46,16 @@ map('n', '<leader>fh', ':Telescope help_tags<CR>', { desc = 'Telescope help tags
 map("n", "K", vim.lsp.buf.hover)
 map("n", "<leader>gd", vim.lsp.buf.definition)
 map("n", "<leader>gr", vim.lsp.buf.references)
+map("n", "<leader>gi", vim.lsp.buf.implementation)
 map({ "n", "v", "x" }, "<leader>ca", vim.lsp.buf.code_action)
 map("n", "<leader>rn", vim.lsp.buf.rename, { noremap=true, silent=true })
 map("n", "<leader>ds", vim.diagnostic.open_float)
 
 map("n", "<leader>gf", vim.lsp.buf.format)
 
-vim.lsp.enable({"lua_ls", "clangd", "omnisharp"})
+map('n', '<Leader><Esc>', ':noh<CR>', { noremap = true, silent = true })
+
+vim.lsp.enable({"lua_ls", "clangd", "omnisharp", "glsl_analyzer" , "cmake", "rust_analyzer"})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
