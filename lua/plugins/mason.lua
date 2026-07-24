@@ -1,6 +1,12 @@
-return {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-}
+vim.pack.add({
+	{
+		src = "https://github.com/williamboman/mason.nvim"
+	},
+})
+
+
+require("mason").setup({
+	registers = {
+		"github:mason-org/mason-registry",
+	},
+})
