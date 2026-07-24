@@ -10,6 +10,7 @@ require("plugins.alpha")
 require("plugins.color")
 require("plugins.dap")
 require("plugins.telescope")
+require("plugins.neogit")
 
 --plugin Update command
 vim.api.nvim_create_user_command("PackUpdate", function()
