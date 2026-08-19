@@ -11,6 +11,7 @@ require("plugins.color")
 require("plugins.dap")
 require("plugins.telescope")
 require("plugins.neogit")
+require("plugins.nvim-tmux-navigation")
 
 --plugin Update command
 vim.api.nvim_create_user_command("PackUpdate", function()
@@ -70,6 +71,11 @@ map("n", "<leader>rn", vim.lsp.buf.rename)
 map("n", "<leader>ds", vim.diagnostic.open_float)
 
 map("n", "<leader><esc>", ":noh<CR>")
+
+map("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", {})
+map("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", {})
+map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", {})
+map("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", {})
 
 map("n", "<leader>dc", ":DapContinue<CR>")
 map("n", "<F5>", ":DapContinue<CR>")
